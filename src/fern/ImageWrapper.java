@@ -44,7 +44,11 @@ public class ImageWrapper {
         int plotX = (int)((x - minX) * scaleFactor) + offsetX;
         int plotY = (int)((y - minY) * scaleFactor) + offsetY;
 
-        image.setRGB(plotX, plotY, color);
+        if ((plotX >= 0) && (plotX < width) && (plotY >= 0) && (plotY < height)) {
+            image.setRGB(plotX, plotY, color);
+        } else {
+            System.out.println("Coordinates out of bounds: " + x + ", " + y);
+        }
     }
 
     /**
